@@ -1,6 +1,8 @@
-def show_welcome_banner(title: str) -> None:
-    draw_banner(f"Welcome to {title}", 60)
-    
+"""
+Currency Converter System Project
+made by: @mdyousufniaz
+"""
+
 def draw_banner(banner_title: str, border_length: int, border_symbol: str='-') -> None:
     BORDER: str = border_symbol * border_length
     print(f"""
@@ -45,7 +47,7 @@ def show_status_msg(curr_name: str, status: str) -> None:
 
 MENU_OPTIONS: tuple[str] = "View all currencies and rate", "Convert currency", "Add a currency", "Remove a currency", "Modify currency rate"
 
-show_welcome_banner("Currency Converter System")
+draw_banner("Welcome to Currency Converter System", 60)
 
 while True:
     print("\n*Available options*")
