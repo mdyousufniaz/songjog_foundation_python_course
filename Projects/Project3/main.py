@@ -26,8 +26,15 @@ def main() -> None:
                 case 1: rms.show_all_food_items()
                 case 2: rms.show_cart()
                 case 3: rms.add_into_cart()
-                case 4: rms.remove_from_cart()
-                case 5: rms.clear_cart()
-                case 6: rms.place_order()
+                case 4: rms.update_quantity()
+                case 5: rms.remove_from_cart()
+                case 6: rms.clear_cart()
+                case 7: rms.place_order()
+                case 8: rms.show_order_history()
+                case 9: 
+                    rms.sign_out()
+                    break
 
 if __name__ == '__main__': main()
+
+# total 75 methods.

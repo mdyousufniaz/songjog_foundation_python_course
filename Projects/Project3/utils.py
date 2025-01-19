@@ -11,8 +11,9 @@ def print_border() -> None:
 def center_aligned_text(text: str) -> str:
     return text.center(TERM_WIDTH)
 
-def center_print(text: str) -> None:
+def center_print(text: str, pause: bool = False) -> None:
     print(center_aligned_text(text))
+    if pause: press_enter_to_continue()
 
 def print_banner(title: str) -> None:
     print_border()
@@ -86,7 +87,7 @@ def press_enter_to_continue() -> None:
 
 def yes_or_no(question: str) -> bool | None:
     answers = 'yes', 'no'
-    if (answer := input(f"{question}?[Yes/No]").lower()) not in answers:
+    if (answer := input(f"{question}? [Yes/No]: ").lower()) not in answers:
         show_invalid_msg('choice')
         return None
     if answer == 'no': return False
@@ -94,3 +95,19 @@ def yes_or_no(question: str) -> bool | None:
 
 def expand_numbers(numbers: str) -> tuple[int]:
     return tuple(map(lambda num: int(num), numbers.split(',')))
+
+def compress_numbers(numbers: tuple[int]) -> str:
+    return ','.join(tuple(map(str, numbers)))
+
+def get_quantity(prmopt: str) -> int | None:
+    user_input = input(prmopt)
+    wrong_amount = False
+    try: amount = int(user_input)
+    except ValueError: wrong_amount = True
+    else:
+        if amount < 1 and not wrong_amount: wrong_amount = True
+    
+    if wrong_amount:
+        show_invalid_msg(f"amount '{user_input}'")
+        return None
+    return amount

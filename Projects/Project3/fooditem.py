@@ -2,12 +2,8 @@ from abc import ABC, abstractmethod
 
 class FoodItem(ABC):
 
-    __current_id = 1
-
     def __init__(self, name: str) -> None:
         super().__init__()
-        self.id = self.__current_id
-        self.__current_id += 1
         self._name = name
 
     def name(self) -> str:
@@ -27,7 +23,6 @@ class Food(FoodItem):
     def price(self) -> float:
         return self.__price
     
-    
 class Combo(FoodItem):
 
     def __init__(self, name: str, foods: tuple[Food]) -> None:
@@ -39,5 +34,3 @@ class Combo(FoodItem):
     
     def name(self) -> str:
         return f"{self._name} ({' + '.join(map(lambda food: food.name(), self.__foods))})"
-
-if __name__ == '__main__': print(Combo('Hello', (Food('Burger', 100),)))

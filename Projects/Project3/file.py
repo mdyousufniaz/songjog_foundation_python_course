@@ -7,9 +7,9 @@ class File:
     def __init__(self, name: str, headers: tuple[str], path: str = DB_DIR, type: str = 'csv'):
         self.__file_path = join(path, f"{name}.{type}")
         self.__headers = headers
-        if not exists(self.__file_path): self.recreate()
+        if not exists(self.__file_path): self.__recreate()
 
-    def recreate(self) -> None:
+    def __recreate(self) -> None:
         with open(self.__file_path, 'w', newline='\n') as file:
             DictWriter(file, fieldnames=self.__headers).writeheader()
 
@@ -55,6 +55,3 @@ class File:
             writer = DictWriter(file, fieldnames=self.__headers)
             writer.writeheader()
             writer.writerows(rows)
-
-            
-

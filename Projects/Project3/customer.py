@@ -6,10 +6,8 @@ class Customer:
 
     @staticmethod
     def get_password(user_name: str) -> str | None:
-        customer_record = Customer.customer_file.get_rows({'username': user_name})
-        if not customer_record: return None
-        
-        return customer_record[0]['password']
+        if (customer_record := Customer.customer_file.get_row({'username': user_name})) is None: return None
+        return customer_record['password']
     
     @staticmethod
     def register(user_name: str, password: str) -> None:
